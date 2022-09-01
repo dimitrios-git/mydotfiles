@@ -15,8 +15,7 @@ call plug#begin()
 Plug 'mattn/emmet-vim'
 Plug '42Paris/42header'
 Plug 'tpope/vim-commentary'
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
 
 
@@ -54,3 +53,6 @@ set backspace=indent,eol,start					" Backspace behaviour
 " Settings for the 42header plugin
 let g:user42 = 'dcharala'
 let g:mail42 = 'dcharala@student.42heilbronn.de'
+
+" Settings for the markdown-preview plugin
+let g:mkdp_theme = 'dark'
