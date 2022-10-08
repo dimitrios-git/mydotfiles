@@ -16,12 +16,18 @@ Plug 'mattn/emmet-vim'
 Plug '42Paris/42header'
 Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
+" Settings for the 42header plugin
+let g:user42 = 'dcharala'
+let g:mail42 = 'dcharala@student.42heilbronn.de'
+
+" Settings for the markdown-preview plugin
+let g:mkdp_theme = 'dark'
 
 " Configuration
-"
-colo ron										" Enable the ron colour scheme
+colo dracula									" Enable the dracula colour scheme
 syntax on										" Enable syntax highlighting
 set number										" Show line numbers
 set relativenumber								" Show line nubmers relative to the cursor line
@@ -49,10 +55,7 @@ set list listchars=tab:\→\ ,trail:·				" Assign visible characters to non-vis
 set undolevels=1000								" Number of undo levels
 set backspace=indent,eol,start					" Backspace behaviour
 
-
-" Settings for the 42header plugin
-let g:user42 = 'dcharala'
-let g:mail42 = 'dcharala@student.42heilbronn.de'
-
-" Settings for the markdown-preview plugin
-let g:mkdp_theme = 'dark'
+" Enable 256 color support
+if $TERM == "xterm-256color"
+	set t_Co=256
+endif
