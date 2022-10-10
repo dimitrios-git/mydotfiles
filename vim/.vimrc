@@ -26,6 +26,9 @@ let g:mail42 = 'dcharala@student.42heilbronn.de'
 " Settings for the markdown-preview plugin
 let g:mkdp_theme = 'dark'
 
+" Setting for the dracula theme
+let g:dracula_colorterm = 0
+
 " Configuration
 colo dracula									" Enable the dracula colour scheme
 syntax on										" Enable syntax highlighting
@@ -54,8 +57,3 @@ set noexpandtab									" Use the appropriate number of spaces to insert a tab
 set list listchars=tab:\→\ ,trail:·				" Assign visible characters to non-visible ones
 set undolevels=1000								" Number of undo levels
 set backspace=indent,eol,start					" Backspace behaviour
-
-" Enable 256 color support
-if $TERM == "xterm-256color"
-	set t_Co=256
-endif
