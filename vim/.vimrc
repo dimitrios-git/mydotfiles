@@ -28,7 +28,10 @@ let g:mkdp_theme = 'dark'
 
 " Setting for the dracula theme
 let g:dracula_colorterm = 0
-" let g:dracula_italic = 0 "Fix issues with italic fonts in iTerm
+" let g:dracula_italic = 0						" Remove italic fonts to fix iTerm issues
+
+" Key mapping
+let g:user_emmet_leader_key=','
 
 " Configuration
 colo dracula									" Enable the dracula colour scheme
