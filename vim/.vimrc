@@ -16,7 +16,6 @@ Plug 'mattn/emmet-vim'
 Plug '42Paris/42header'
 Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 " Settings for the 42header plugin
@@ -26,15 +25,13 @@ let g:mail42 = 'dcharala@student.42heilbronn.de'
 " Settings for the markdown-preview plugin
 let g:mkdp_theme = 'dark'
 
-" Setting for the dracula theme
-let g:dracula_colorterm = 0
-" let g:dracula_italic = 0						" Remove italic fonts to fix iTerm issues
-
 " Key mapping
 let g:user_emmet_leader_key=','
 
 " Configuration
-colo dracula									" Enable the dracula colour scheme
+colo ron										" Enable the ron scheme
+set t_RV=										" Ignore termresponse for 16 colours to work
+set t_Co=16										" Replicate the linux console (16 colours)
 syntax on										" Enable syntax highlighting
 set number										" Show line numbers
 set relativenumber								" Show line nubmers relative to the cursor line
@@ -50,14 +47,14 @@ set ignorecase									" Always case-insensitive
 set incsearch									" Search for strings incrementally
 set shiftwidth=4								" Number of auto-indent spaces
 set autoindent									" Auto-indent new lines
-set copyindent									" Copy the structure of the existing lines indent
+set copyindent									" Copy the structure of existing lines' indent
 set preserveindent								" Preserve the indent structure
 autocmd BufRead *.c setlocal cindent			" Use 'C' style program indenting for C files
-autocmd BufRead *.c setlocal formatoptions+=t	" Apply line wrapping for non-comments in C files
+autocmd BufRead *.c setlocal formatoptions+=t	" Line wrapping for non-comments in C files
 set smarttab									" Enable smart-tabs
-set softtabstop=0								" Set softtabstop to zero for tabstop to work properly
+set softtabstop=0								" Set to zero for tabstop to work properly
 set tabstop=4									" Set the tab to be equal to 4 spaces
-set noexpandtab									" Use the appropriate number of spaces to insert a tab
+set noexpandtab									" Use the right number of spaces to insert a tab
 set list listchars=tab:\→\ ,trail:·				" Assign visible characters to non-visible ones
 set undolevels=1000								" Number of undo levels
 set backspace=indent,eol,start					" Backspace behaviour
