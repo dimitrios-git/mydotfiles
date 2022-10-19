@@ -8,7 +8,7 @@ hi AuxWin       cterm=none                    ctermfg=default  ctermbg=232
 hi OddLine                                    ctermfg=default  ctermbg=default
 
 hi TopLine      cterm=none                    ctermfg=232      ctermbg=white
-hi TopLineSel   cterm=none                    ctermfg=232      ctermbg=default
+hi TopLineSel   cterm=bold                    ctermfg=232      ctermbg=default
 
 hi TabLine      cterm=none                    ctermfg=white    ctermbg=232
 hi TabLineSel   cterm=none,reverse            ctermfg=default  ctermbg=default
