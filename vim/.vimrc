@@ -16,6 +16,7 @@ Plug 'mattn/emmet-vim'
 Plug '42Paris/42header'
 Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug '907th/vim-auto-save'
 call plug#end()
 
 " Settings for the 42header plugin
@@ -24,6 +25,13 @@ let g:mail42 = 'dcharala@student.42heilbronn.de'
 
 " Settings for the markdown-preview plugin
 let g:mkdp_theme = 'dark'
+
+" Settings for the vim-auto-save plugin
+let g:auto_save = 0
+augroup ft_markdown
+	au!
+	au FileType markdown let b:auto_save = 1
+augroup END
 
 " Key mapping
 let g:user_emmet_leader_key=','
