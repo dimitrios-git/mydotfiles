@@ -18,6 +18,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug '907th/vim-auto-save'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'jeffkreeftmeijer/vim-dim'
 call plug#end()
 
 " Settings for the 42header plugin
@@ -40,7 +41,7 @@ let g:user_emmet_leader_key=','
 au BufRead,BufNewFile *.ejs setf javascript.jsx
 
 " Configuration
-colo ron										" Enable the ron scheme
+colo dim										" Enable the dim color scheme
 set t_RV=										" Ignore termresponse for 16 colours to work
 set t_Co=16										" Replicate the linux console (16 colours)
 syntax on										" Enable syntax highlighting
