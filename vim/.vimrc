@@ -9,7 +9,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
 " Plugins
 call plug#begin()
 Plug 'mattn/emmet-vim'
@@ -17,6 +16,8 @@ Plug '42Paris/42header'
 Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug '907th/vim-auto-save'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 " Settings for the 42header plugin
@@ -35,6 +36,8 @@ augroup END
 
 " Key mapping
 let g:user_emmet_leader_key=','
+
+au BufRead,BufNewFile *.ejs setf javascript.jsx
 
 " Configuration
 colo ron										" Enable the ron scheme
