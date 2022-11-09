@@ -86,13 +86,13 @@ fi
 
 if ${use_color} ; then
 	if [[ ${EUID} == 0 ]] ; then
-		PS1+='\[\033[091m\]\h\[\033[094m\] \w \$\[\033[00m\] '
+		PS1+="\[\033[091m\]\h\[\033[094m\] \w\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') \\$\[\033[00m\] "
 		# Switch the two lines if your terminal supports bold characters.
-		# PS1+='\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '
+		# PS1+="\[\033[01;31m\]\h\[\033[01;34m\] \w\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') \\$\[\033[00m\] "
 	else
-		PS1+='\[\033[092m\]\u@\h\[\033[094m\] \w \$\[\033[00m\] '
+		PS1+="\[\033[092m\]\u@\h\[\033[094m\] \w\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') \\$\[\033[00m\] "
 		# Switch the two lines if your terminal supports bold characters.
-		# PS1+='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
+		# PS1+="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') \\$\[\033[00m\] "
 	fi
 
 	alias ls='ls --color=auto'
