@@ -18,7 +18,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug '907th/vim-auto-save'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'dscharalampidis/vim-default-gentoo'
 call plug#end()
 
 " Settings for the 42header plugin
@@ -33,15 +33,18 @@ let g:auto_save = 0
 augroup ft_markdown
 	au!
 	au FileType markdown let b:auto_save = 1
+	au FileType html let b:auto_save = 1
+	au FileType css let b:auto_save = 1
 augroup END
 
 " Key mapping
 let g:user_emmet_leader_key=','
 
+" Impove syntax highlighting for JS frameworks
 au BufRead,BufNewFile *.ejs setf javascript.jsx
 
 " Configuration
-colo dim										" Enable the dim color scheme
+colo default-gentoo								" Enable the default gentoo  colour scheme
 set t_RV=										" Ignore termresponse for 16 colours to work
 set t_Co=16										" Replicate the linux console (16 colours)
 syntax on										" Enable syntax highlighting
