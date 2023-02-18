@@ -19,6 +19,8 @@ Plug '907th/vim-auto-save'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'dscharalampidis/vim-default-gentoo'
+Plug 'tmsvg/pear-tree'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 " Settings for the 42header plugin
