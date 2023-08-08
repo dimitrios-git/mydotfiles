@@ -54,7 +54,7 @@ set number										" Show line numbers
 set relativenumber								" Show line nubmers relative to the cursor line
 set ruler										" Show the line and column number of the cursor
 set linebreak									" Break lines at word
-set showbreak=↳									" Wrap-broken line prefix
+set showbreak=--								" Wrap-broken line prefix
 set textwidth=80								" Line wraps at 80 characters
 set showmatch									" Highlight matching brace
 set noerrorbells visualbell t_vb=				" No audio or visual bell
@@ -72,6 +72,6 @@ set smarttab									" Enable smart-tabs
 set softtabstop=0								" Set to zero for tabstop to work properly
 set tabstop=4									" Set the tab to be equal to 4 spaces
 set noexpandtab									" Use the right number of spaces to insert a tab
-set list listchars=tab:\→\ ,trail:·				" Assign visible characters to non-visible ones
+set list listchars=tab:\|\ ,trail:-				" Assign visible characters to non-visible ones
 set undolevels=1000								" Number of undo levels
 set backspace=indent,eol,start					" Backspace behaviour
