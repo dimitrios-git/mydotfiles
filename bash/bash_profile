@@ -9,3 +9,4 @@ fi
 
 # Add directories to PATH
 export PATH="/home/dscharalampidis/.local/bin:$PATH"
+export PATH="/home/dscharalampidis//flutter/bin:$PATH"
