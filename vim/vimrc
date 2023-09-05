@@ -47,6 +47,9 @@ Plugin 'preservim/nerdtree'
 " Promising auto-complete plugin
 Plugin 'ycm-core/YouCompleteMe'
 
+" DevIcons
+Plugin 'ryanoasis/vim-devicons'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,14 +76,18 @@ let g:ycm_clear_inlay_hints_in_insert_mode=1
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+" Automatically refresh NERDTree root --might casue perfromance issues on large
+" trees.
+augroup refreshNERDTree
+    autocmd!
+    autocmd BufEnter NERD_tree_* NERDTreeRefreshRoot
+augroup END
 
-" Prettier plugin requirement
+" Prettier plugin configuration
 packloadall
-
-" when running at every change you may want to disable quickfix
+let g:prettier#autoformat = 0
 let g:prettier#quickfix_enabled = 0
-
-autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 
 " Settings for the 42header plugin
 let g:user42 = 'dcharala'
@@ -90,6 +97,7 @@ let g:mail42 = 'dcharala@student.42heilbronn.de'
 let g:mkdp_theme = 'dark'
 
 " Settings for the vim-auto-save plugin
+" Don't auto-save by default
 let g:auto_save = 0
 augroup ft_markdown
 	au!
