@@ -54,3 +54,6 @@ if [ -d $HOME/.oh-my-zsh/plugins ]; then
 	source $HOME/.oh-my-zsh/custom/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 fi
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
+
+# Enable vi keybinding
+bindkey -v
