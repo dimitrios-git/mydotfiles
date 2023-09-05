@@ -57,3 +57,8 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # Enable vi keybinding
 bindkey -v
+
+# Disable path underline
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
