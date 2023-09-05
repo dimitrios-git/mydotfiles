@@ -1,0 +1,10 @@
+[user]
+	name = Dimitrios Charalampidis
+	email = dimitrios@charalampidis.pro
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[core]
+	excludesfile = /home/dscharalampidis/.gitignore_global
+	editor = vim
