@@ -1,0 +1,116 @@
+" ~/.vimrc
+"
+" This configuration was tested with Vim 8.0 and above.
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vddundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'mattn/emmet-vim'
+Plugin '42Paris/42header'
+Plugin 'tpope/vim-commentary'
+Plugin 'iamcco/markdown-preview.nvim'
+Plugin '907th/vim-auto-save'
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'dscharalampidis/vim-default-gentoo'
+Plugin 'tmsvg/pear-tree'
+Plugin 'preservim/nerdtree'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'prettier/vim-prettier'
+" Plugin 'ycm-core/YouCompleteMe'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" Enable autopopup for YCM
+let g:ycm_auto_trigger=1
+" Enable semantic highlighting for YCM
+let g:ycm_semantic_highlighting=1
+" Experimental: Enable inlay hints for YCM
+let g:ycm_enable_inlay_hints=1
+let g:ycm_clear_inlay_hints_in_insert_mode=1
+
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" Prettier plugin requirement
+packloadall
+
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#trailing_comma = 'all'
+
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+
+" Settings for the 42header plugin
+let g:user42 = 'dcharala'
+let g:mail42 = 'dcharala@student.42heilbronn.de'
+
+" Settings for the markdown-preview plugin
+let g:mkdp_theme = 'dark'
+
+" Settings for the vim-auto-save plugin
+let g:auto_save = 0
+augroup ft_markdown
+	au!
+	au FileType markdown let b:auto_save = 1
+	au FileType html let b:auto_save = 1
+	au FileType css let b:auto_save = 1
+augroup END
+
+" Key mapping
+let g:user_emmet_leader_key=','
+
+" Impove syntax highlighting for JS frameworks
+au BufRead,BufNewFile *.ejs setf javascript.jsx
+
+" Configuration
+colo default-gentoo								" Enable the default gentoo  colour scheme
+set t_RV=										" Ignore termresponse for 16 colours to work
+set t_Co=16										" Replicate the linux console (16 colours)
+syntax on										" Enable syntax highlighting
+set number										" Show line numbers
+set relativenumber								" Show line nubmers relative to the cursor line
+set ruler										" Show the line and column number of the cursor
+set linebreak									" Break lines at word
+set showbreak=--								" Wrap-broken line prefix
+set textwidth=80								" Line wraps at 80 characters
+set colorcolumn=+1								" A vertical column text-width
+set showmatch									" Highlight matching brace
+set noerrorbells visualbell t_vb=				" No audio or visual bell
+set hlsearch									" Highlight all search results
+set smartcase									" Enable smart-case search
+set ignorecase									" Always case-insensitive
+set incsearch									" Search for strings incrementally
+set shiftwidth=4								" Number of auto-indent spaces
+set autoindent									" Auto-indent new lines
+set copyindent									" Copy the structure of existing lines' indent
+set preserveindent								" Preserve the indent structure
+autocmd BufRead *.c setlocal cindent			" Use 'C' style program indenting for C files
+autocmd BufRead *.c setlocal formatoptions+=t	" Line wrapping for non-comments in C files
+"set foldmethod=syntax 							" Enable folding based on syntax
+set smarttab									" Enable smart-tabs
+set softtabstop=0								" Set to zero for tabstop to work properly
+set tabstop=4									" Set the tab to be equal to 4 spaces
+set noexpandtab									" Use the right number of spaces to insert a tab
+set list listchars=tab:\|\ ,trail:-				" Assign visible characters to non-visible ones
+set undolevels=1000								" Number of undo levels
+set backspace=indent,eol,start					" Backspace behaviour
+set iskeyword+=-								" CSS autocomplete
