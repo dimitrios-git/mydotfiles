@@ -1,0 +1,5 @@
+alias camera2webcam='gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p  -f v4l2 /dev/video0'
+alias backupSystem='sudo rsync -aAXHv --stats --info=progress2 --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found",,"/snap/*","/home/*","/var/lib/lxcfs/proc/*","/var/lib/lxcfs/sys/*","/var/lib/plexmediaserver"} / /home/dimitrios/Backups/vgd-root_backup/ --delete'
+alias backupHome='sudo rsync -aAXHv --stats --info=progress2 --exclude={"dimitrios/Backups/*","dimitrios/Mounts/*","dimitrios/Cloud/*"} /home/* /home/dimitrios/Backups/vgd-home_backup/ --delete'
+alias backupExternal='rsync -av --no-perms --no-owner --no-group --stats --info=progress2 --exclude={"Backups/*","Mounts/*","Cloud/*","Documents/*","snap",".*","System Volume Information/*"} /home/dimitrios/* /media/dimitrios/dimitrios---4T --delete'
+alias lsblk_dimitrios='lsblk -o NAME,FSTYPE,FSVER,LABEL,FSAVAIL,FSUSE%,MOUNTPOINTS | grep -v "^loop"'
