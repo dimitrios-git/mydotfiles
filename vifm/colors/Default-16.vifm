@@ -1155,7 +1155,7 @@ highlight {*.726,
 \*.wax,
 \*.wma,
 \*.xhe}
-\ cterm=none ctermfg=5 ctermbg=default
+\ cterm=none ctermfg=2 ctermbg=default
 
 " chemical
 highlight {*.alc,
@@ -1354,7 +1354,7 @@ highlight {*.apng,
 \*.xpm,
 \*.xwd,
 \*.xyze}
-\ cterm=none ctermfg=5 ctermbg=default
+\ cterm=none ctermfg=2 ctermbg=default
 
 " message
 highlight {*.art,
@@ -1538,7 +1538,7 @@ highlight {*.3dm,
 \*.wml,
 \*.wmls,
 \*.zone}
-\ cterm=none ctermfg=3 ctermbg=default
+\ cterm=none ctermfg=2 ctermbg=default
 
 " video
 highlight {*.avi,
@@ -1605,4 +1605,4 @@ highlight {*.avi,
 \*.wmx,
 \*.wvx,
 \*.yt}
-\ cterm=none ctermfg=5 ctermbg=default
+\ cterm=none ctermfg=2 ctermbg=default
