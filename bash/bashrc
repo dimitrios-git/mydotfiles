@@ -56,8 +56,24 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Save the exit status of the last command
+PROMPT_COMMAND="last_exit_status=\$?"
+
+prompt_exit_status_color() {
+    if [ "$last_exit_status" -eq 0 ]; then
+        echo "01;92m"  # Green for success
+    else
+        echo "01;91m"  # Red for failure
+    fi
+}
+
 if [ "$color_prompt" = yes ]; then
-    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;94m\]\w\[\033[093m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/') \[\033[01;94m\]\\$\[\033[00m\] "
+PS1="${debian_chroot:+($debian_chroot)}\[\033[01;94m\]\w"
+PS1+="\[\033[093m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/')"
+PS1+="\[\033[01;32m\]\$(staged_changes=\$(git diff --cached --numstat 2>/dev/null | wc -l); [[ \$staged_changes -gt 0 ]] && echo \" +\$staged_changes\")"
+PS1+="\[\033[01;31m\]\$(unstaged_changes=\$(git diff --numstat 2>/dev/null | wc -l); [[ \$unstaged_changes -gt 0 ]] && echo \" !\$unstaged_changes\")"
+PS1+="\[\033[01;31m\]\$(untracked_files=\$(git ls-files --others --exclude-standard 2>/dev/null | wc -l); [[ \$untracked_files -gt 0 ]] && echo \" ?\$untracked_files\")"
+PS1+="\[\033[\$(prompt_exit_status_color)\] \\$\[\033[00m\] "
 else
     PS1="${debian_chroot:+($debian_chroot)}\w\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/') \\$ "
 fi
