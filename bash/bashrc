@@ -91,7 +91,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    export LS_COLORS+='rs=0:di=096:ln=093:mh=00:pi=40;33:so=095:do=095:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=092:'
+    # export LS_COLORS+='rs=0:di=096:ln=093:mh=00:pi=40;33:so=095:do=095:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=092:'
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -136,7 +136,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# fix docker dark blue color
+export BUILDKIT_COLORS="run=light-blue:error=light-red:cancel=light-cyan:warning=light-red"
+
+# install nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
+
+# install Rust using rustup
+if [ -f $HOME/.cargo/env ]; then
+	. "$HOME/.cargo/env"
+else
+	curl --proto '=https' -sSf https://sh.rustup.rs | sh
+fi
