@@ -26,9 +26,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# temporary fix for pulseaudio service not starting at boot although enabled
-systemctl --user start pulseaudio
-
 # theming QT apps can be tedious
 export QT_QPA_PLATFORMTHEME=gtk2
 . "$HOME/.cargo/env"

@@ -6,5 +6,5 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = /home/dscharalampidis/.gitignore_global
+	excludesfile = /home/dimitrios/.gitignore_global
 	editor = vim
