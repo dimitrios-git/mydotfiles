@@ -8,19 +8,20 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'mattn/emmet-vim'
-Plugin '42Paris/42header'
 Plugin 'tpope/vim-commentary'
-Plugin 'iamcco/markdown-preview.nvim'
 Plugin '907th/vim-auto-save'
-Plugin 'mxw/vim-jsx'
+Plugin 'mattn/emmet-vim'
+Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'pangloss/vim-javascript'
-Plugin 'dscharalampidis/vim-default-gentoo'
-Plugin 'tmsvg/pear-tree'
-Plugin 'preservim/nerdtree'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'prettier/vim-prettier' " requires node 18+ and npm install
+Plugin 'mxw/vim-jsx'
+Plugin 'ycm-core/YouCompleteMe' " requires python3.8+
+Plugin '42Paris/42header'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'github/copilot.vim' " requires Vim version 9.0.0185
+Plugin 'dimitrios-git/vim-default-gentoo'
+Plugin 'dracula/vim', { 'as': 'dracula' }
+Plugin 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -28,54 +29,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" Configure YCM
-let g:ycm_auto_trigger=1 " enable autopopup
-let g:ycm_semantic_highlighting=1 " enable semantic highlighting
-" Experimental: Enable inlay hints
-let g:ycm_enable_inlay_hints=1
-let g:ycm_clear_inlay_hints_in_insert_mode=1
-
-" Configure NERDTree
-" Start NERDTree when Vim is started without file arguments.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
-" Automatically refresh NERDTree root --might casue perfromance issues on large
-" trees.
-augroup refreshNERDTree
-    autocmd!
-    autocmd BufEnter NERD_tree_* NERDTreeRefreshRoot
-augroup END
-
-" Configure Prettier
-packloadall
-let g:prettier#autoformat = 0
-let g:prettier#quickfix_enabled = 0
-autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
-
-" Configure 42header
-let g:user42 = 'dcharala'
-let g:mail42 = 'dcharala@student.42heilbronn.de'
-
-" Configure Markdown Preview
-let g:mkdp_theme = 'dark'
-
-" Configure Vim Auto-Save
-let g:auto_save = 0 " Don't auto-save by default
-augroup ft_markdown
-	au!
-	au FileType markdown let b:auto_save = 1
-	au FileType html let b:auto_save = 1
-	au FileType css let b:auto_save = 1
-augroup END
-
-" Configure Emmet
-let g:user_emmet_leader_key=','
-
-" Impove syntax highlighting for JS frameworks
-au BufRead,BufNewFile *.ejs setf javascript.jsx
-
 " Configure Vim
-colo default-gentoo " Enable the default gentoo  colour scheme
+" colo  dracula " Enable the color scheme
+colo default-gentoo " Enable the color scheme
 set t_RV= " Ignore termresponse for 16 colours to work
 set t_Co=16 " Replicate the linux console (16 colours)
 syntax on " Enable syntax highlighting
@@ -85,6 +41,7 @@ set ruler " Show the line and column number of the cursor
 set linebreak " Break lines at word
 set showbreak=-- " Wrap-broken line prefix
 set textwidth=80 " Line wraps at 80 characters
+autocmd FileType html set textwidth=0 " Disable line wrapping for HTML files
 set colorcolumn=+1 " A vertical column text-width
 set showmatch " Highlight matching brace
 set noerrorbells visualbell t_vb= " No audio or visual bell
@@ -98,7 +55,7 @@ set copyindent " Copy the structure of existing lines' indent
 set preserveindent " Preserve the indent structure
 autocmd BufRead *.c setlocal cindent " Use 'C' style program indenting for C files
 autocmd BufRead *.c setlocal formatoptions+=t " Line wrapping for non-comments in C files
-set foldmethod=syntax " Enable folding based on syntax
+" set foldmethod=syntax " Enable folding based on syntax
 set smarttab " Enable smart-tabs
 set softtabstop=0 " Set to zero for tabstop to work properly
 set tabstop=4 " Set the tab to be equal to 4 spaces
@@ -107,3 +64,39 @@ set list listchars=tab:\|\ ,trail:- " Assign visible characters to non-visible o
 set undolevels=1000 " Number of undo levels
 set backspace=indent,eol,start " Backspace behaviour
 set iskeyword+=- " CSS autocomplete
+set clipboard=unnamedplus " Enable system clipboard
+
+" Configure Vim Auto-Save
+let g:auto_save = 0 " Don't auto-save by default
+augroup ft_markdown
+	au!
+	au FileType markdown let b:auto_save = 1
+	au FileType html let b:auto_save = 1
+	au FileType css let b:auto_save = 1
+	au FileType scss let b:auto_save = 1
+	au FileType js let b:auto_save = 1
+augroup END
+
+" Configure Emmet
+let g:user_emmet_leader_key=','
+
+" Impove syntax highlighting for JS frameworks
+au BufRead,BufNewFile *.ejs setf javascript.jsx
+
+" Configure Markdown Preview
+let g:mkdp_theme = 'dark'
+
+" Configure YCM
+let g:ycm_auto_trigger=1 " enable autopopup
+let g:ycm_semantic_highlighting=1 " enable semantic highlighting
+" Experimental: Enable inlay hints
+let g:ycm_enable_inlay_hints=1
+let g:ycm_clear_inlay_hints_in_insert_mode=1
+
+" Configure 42header
+let g:user42 = 'dcharala'
+let g:mail42 = 'dcharala@student.42heilbronn.de'
+
+" Configure vim-hexokinase
+set termguicolors
+let g:Hexokinase_highlighters = [ 'backgroundfull' ]
