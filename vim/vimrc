@@ -19,8 +19,7 @@ Plugin 'ycm-core/YouCompleteMe' " requires python3.8+
 Plugin '42Paris/42header'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'github/copilot.vim' " requires Vim version 9.0.0185
-Plugin 'dimitrios-git/vim-default-gentoo'
-Plugin 'dracula/vim', { 'as': 'dracula' }
+Plugin 'dimitrios-git/vim-theme-default-16'
 Plugin 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " All of your Plugins must be added before the following line
@@ -30,8 +29,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " Configure Vim
-" colo  dracula " Enable the color scheme
-colo default-gentoo " Enable the color scheme
+colo default-16 " Enable the color scheme
 set t_RV= " Ignore termresponse for 16 colours to work
 set t_Co=16 " Replicate the linux console (16 colours)
 syntax on " Enable syntax highlighting
